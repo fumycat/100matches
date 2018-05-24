@@ -18,3 +18,13 @@ int check_input(int i, int m)
     }
 }
 
+int make_turn(int i, int* m)
+{
+    if (check_input(i, *m)) {
+        *m -= i;
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}

@@ -6,7 +6,7 @@ void pvp();
 
 int main(int argc, char* argv[])
 {
-    if (!(strcmp(argv[1], "pvp"))) {
+    if (argv[1] == NULL || !(strcmp(argv[1], "pvp"))) {
         pvp();
     }
     else {
@@ -22,12 +22,11 @@ void pvp()
     while (h) {
         printf("Player %d turn. %d matches left.\n", p + 1, h);
         i = get_input();
-        if (check_input(i, h)) {
-            h -= i;
+        if (make_turn(i, &h)) {
             p = 1 - p;
         }
         else {
-            printf("Incorrect input");
+            printf("Incorrect input\n");
         }
     }
     printf("Player %d won!\n", p + 1);
