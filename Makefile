@@ -9,10 +9,13 @@ run: all
 test: all
 	echo "Ok"
 
-main: main.o
+main: main.o func.o
 	$(CC) build/*.o -o bin/$@
 
 main.o: src/main.cpp
+	$(CC) $(FLAGS) -o build/$@ $<
+	
+func.o: src/func.cpp
 	$(CC) $(FLAGS) -o build/$@ $<
 
 dirs:
@@ -20,3 +23,4 @@ dirs:
 
 clean:
 	rm -rf build/* bin/*
+

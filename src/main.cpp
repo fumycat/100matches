@@ -1,22 +1,35 @@
 #include <stdio.h>
+#include <string.h>
+#include "func.h"
 
-int main(){
-	printf("TODO\n");
-	
-	int h = 100;
-	int p = 0;
-	int i;
-	while (h){
-		printf("Player %d turn. %d matches left.\n", p + 1, h);
-		scanf("%d", &i);
-		// TODO: check data type
-		if (i < 2 || i > 10) {
-			printf("Incorrect input. Please reapeat\n");
-			continue;
-		}
-		// TODO: check i < h
-        h -= i;
-        p = 1 - p;
-	}
-	printf("Player %d won!\n", p + 1);
+void pvp();
+
+int main(int argc, char* argv[])
+{
+    if (!(strcmp(argv[1], "pvp"))) {
+        pvp();
+    }
+    else {
+        pvp(); // TODO
+    }
 }
+
+void pvp()
+{
+    int h = 100; // matches
+    int p = 0; // player
+    int i; // input
+    while (h) {
+        printf("Player %d turn. %d matches left.\n", p + 1, h);
+        i = get_input();
+        if (check_input(i, h)) {
+            h -= i;
+            p = 1 - p;
+        }
+        else {
+            printf("Incorrect input");
+        }
+    }
+    printf("Player %d won!\n", p + 1);
+}
+
