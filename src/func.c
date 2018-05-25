@@ -52,7 +52,8 @@ int calculate(int m)
         return 10;
     int i;
     int target[8] = { 89, 78, 67, 56, 45, 34, 23, 12 };
-    for (int d = 0; d < 8; d++) {
+    int d;
+    for (d = 0; d < 8; d++) {
         i = m - target[d];
         if (check_input(i, m)) {
             return i;
