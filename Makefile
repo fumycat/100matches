@@ -1,26 +1,39 @@
-CC=g++
-FLAGS=-c -Wall -Werror
+CC = gcc
+FLAGS = -c -I src -I test -I Lib -Wall -Werror
 
-all: dirs main
-
-run: all
-	./bin/main
-
-test: all
-	echo "Ok"
+all: main Test
 
 main: main.o func.o
-	$(CC) build/*.o -o bin/$@
+	mkdir -p bin
+	$(CC) build/igra/*.o -o bin/$@
 
 main.o: src/main.cpp
-	$(CC) $(FLAGS) -o build/$@ $<
+	mkdir -p build/igra
+	$(CC) $(FLAGS) -o build/igra/$@ $<
 	
 func.o: src/func.cpp
-	$(CC) $(FLAGS) -o build/$@ $<
+	mkdir -p build/igra
+	$(CC) $(FLAGS) -o build/igra/$@ $<
 
-dirs:
-	mkdir -p bin/ build/
+
+Test: test
+test: progect.o testMain.o
+	mkdir -p bin
+	$(CC) build/test/*.o -o bin/$@
+
+testMain.o: test/main.c
+	mkdir -p build/test
+	$(CC) $(FLAGS) -o build/test/$@ $<
+
+progect.o: test/progect_test.c
+	mkdir -p build/test
+	$(CC) $(FLAGS) -o build/test/$@ $<
+
+
+
+
+.Phony: clean
 
 clean:
-	rm -rf build/* bin/*
+	rm -rf build bin
 
