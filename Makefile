@@ -17,13 +17,10 @@ func.o: src/func.c
 
 
 Test: test 
-test: progect.o testMain.o func.o
+test: progect.o testMain.o build/igra/func.o
 	mkdir -p bin
-	$(CC) build/test/*.o -o bin/$@
+	$(CC) build/test/*.o build/igra/func.o -o bin/$@
 
-func.o: src/func.c
-	mkdir -p build/test
-	$(CC) $(FLAGS) -o build/test/$@ $<
 
 testMain.o: test/main.c
 	mkdir -p build/test
