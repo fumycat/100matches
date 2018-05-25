@@ -14,6 +14,7 @@ int main(int argc, char* argv[])
     else {
         pvp();
     }
+    return 0;
 }
 
 void pvp()
