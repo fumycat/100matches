@@ -43,15 +43,17 @@ void pve()
     while (p == -1) {
         p = get_order();
     }
+    int count = 1;
     int h = 100; // matches
     int i; // input
     while (h) {
-        if (!p){
-            printf("You turn. %d matches left.\n", h);
+        if (!p) {
+            printf("%d)You turn. %d matches left.\n", count, h);
             i = get_input();
             if (make_turn(i, &h)) {
                 p = 1 - p;
                 printf("You take %d matches. %d matches left.\n\n", i, h);
+                count++;
             }
             else {
                 printf("Incorrect input\n");
@@ -67,7 +69,8 @@ void pve()
                 r = make_turn(i, &h);
             } while (!r);
             p = 1 - p;
-            printf("Computer take %d matches.\n\n", i);
+            printf("%d)Computer take %d matches.\n\n", count, i);
+            count++;
         }
     }
     if (!p) {

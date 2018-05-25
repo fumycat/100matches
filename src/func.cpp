@@ -44,11 +44,14 @@ int get_order()
     return -1;
 }
 
-int calculate(int m){
-    if (m < 10 && m > 2) return m - 1;
-    if (m == 11) return 10;
+int calculate(int m)
+{
+    if (m < 10 && m > 2)
+        return m - 1;
+    if (m == 11)
+        return 10;
     int i;
-    int target[8] = {89, 78, 67, 56, 45, 34, 23, 12};
+    int target[8] = { 89, 78, 67, 56, 45, 34, 23, 12 };
     for (int d; d < 8; d++) {
         i = m - target[d];
         if (check_input(i, m)) {
